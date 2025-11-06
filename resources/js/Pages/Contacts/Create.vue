@@ -2,6 +2,7 @@
 import { useForm, Head, Link } from '@inertiajs/vue3'
 import { ref, watch, onBeforeUnmount } from 'vue'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
+import { sanitizePhoneInput } from '@/Composables/usePhoneInput'
 
 const form = useForm({
   name: '',
@@ -14,7 +15,7 @@ function submit () {
   form.post(route('contacts.store'), { forceFormData: true })
 }
 
-// Preview da imagem escolhida
+// previa da imagem
 const previewUrl = ref(null)
 let lastObjectUrl = null
 
@@ -27,6 +28,11 @@ watch(() => form.image, (file) => {
 onBeforeUnmount(() => {
   if (lastObjectUrl) URL.revokeObjectURL(lastObjectUrl)
 })
+
+function onPhoneInput(e) {
+  e.target.value = sanitizePhoneInput(e.target.value)
+  form.phone = e.target.value
+}
 </script>
 
 <template>
@@ -85,6 +91,7 @@ onBeforeUnmount(() => {
               placeholder="(71) 9 9999-9999"
               autocomplete="tel"
               required
+              @input="onPhoneInput"
             />
             <p v-if="form.errors.phone" class="error">{{ form.errors.phone }}</p>
           </div>

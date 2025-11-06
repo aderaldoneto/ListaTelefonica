@@ -2,11 +2,12 @@
 import { useForm, Head, Link } from '@inertiajs/vue3'
 import { ref, watch, onBeforeUnmount } from 'vue'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
+import { sanitizePhoneInput } from '@/Composables/usePhoneInput'
 
 const props = defineProps({
   contact: {
     type: Object,
-    required: true, // { id, name, email, phone, image_url? }
+    required: true,
   },
 })
 
@@ -14,8 +15,8 @@ const form = useForm({
   name: props.contact.name ?? '',
   email: props.contact.email ?? '',
   phone: props.contact.phone ?? '',
-  image: null,              // novo arquivo (opcional)
-  _remove_image: false,     // flag p/ controller apagar imagem atual
+  image: null, 
+  _remove_image: false,
 })
 
 function submit() {
@@ -26,7 +27,7 @@ function submit() {
   })
 }
 
-// Preview da imagem escolhida (substitui a atual somente visualmente)
+// Preview da imagem escolhida
 const previewUrl = ref(null)
 let lastObjectUrl = null
 
@@ -40,7 +41,7 @@ onBeforeUnmount(() => {
   if (lastObjectUrl) URL.revokeObjectURL(lastObjectUrl)
 })
 
-// Quando marcar “remover imagem”, limpamos o file e o preview
+// Quando marcar em remover imagem, limpar o file e o preview
 watch(() => form._remove_image, (val) => {
   if (val) {
     form.image = null
@@ -51,6 +52,11 @@ watch(() => form._remove_image, (val) => {
     previewUrl.value = null
   }
 })
+
+function onPhoneInput(e) {
+  e.target.value = sanitizePhoneInput(e.target.value)
+  form.phone = e.target.value
+}
 </script>
 
 <template>
@@ -113,6 +119,7 @@ watch(() => form._remove_image, (val) => {
               placeholder="(71) 9 9999-9999"
               required
               autocomplete="tel"
+              @input="onPhoneInput"
             />
             <p v-if="form.errors.phone" class="error">{{ form.errors.phone }}</p>
           </div>
