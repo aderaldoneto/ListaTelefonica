@@ -3,7 +3,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import DeleteUserForm from './Partials/DeleteUserForm.vue';
 import UpdatePasswordForm from './Partials/UpdatePasswordForm.vue';
 import UpdateProfileInformationForm from './Partials/UpdateProfileInformationForm.vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 
 defineProps({
     mustVerifyEmail: {
@@ -20,11 +20,16 @@ defineProps({
 
     <AuthenticatedLayout>
         <template #header>
-            <h2
-                class="text-xl font-semibold leading-tight text-gray-800"
-            >
-                Profile
-            </h2>
+            <div class="flex items-center justify-between">
+                <h2
+                    class="text-xl font-semibold leading-tight text-gray-800"
+                >
+                    Profile
+                </h2>
+                <div class="flex gap-2">
+                    <Link :href="route('contacts.index')" class="btn-secondary">Voltar</Link>
+                </div>
+            </div>
         </template>
 
         <div class="py-12">
@@ -54,3 +59,7 @@ defineProps({
         </div>
     </AuthenticatedLayout>
 </template>
+
+<style scoped>
+.btn-secondary { @apply rounded border px-3 py-2 hover:bg-gray-50; }
+</style>

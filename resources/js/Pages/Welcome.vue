@@ -56,10 +56,10 @@ const props = defineProps({
         </div>
 
         <ul class="mt-6 grid sm:grid-cols-2 gap-3 text-sm text-zinc-600 dark:text-zinc-300">
-          <li class="flex items-center gap-2"><span class="h-2 w-2 bg-blue-600 rounded-full" />Exemplo 01</li>
-          <li class="flex items-center gap-2"><span class="h-2 w-2 bg-blue-600 rounded-full" />Exemplo 02</li>
-          <li class="flex items-center gap-2"><span class="h-2 w-2 bg-blue-600 rounded-full" />Exemplo 03</li>
-          <li class="flex items-center gap-2"><span class="h-2 w-2 bg-blue-600 rounded-full" />Exemplo 04</li>
+          <li class="flex items-center gap-2"><span class="h-2 w-2 bg-blue-600 rounded-full" />Botar algo aqui 01</li>
+          <li class="flex items-center gap-2"><span class="h-2 w-2 bg-blue-600 rounded-full" />Botar algo aqui 02</li>
+          <li class="flex items-center gap-2"><span class="h-2 w-2 bg-blue-600 rounded-full" />Botar algo aqui 03</li>
+          <li class="flex items-center gap-2"><span class="h-2 w-2 bg-blue-600 rounded-full" />Botar algo aqui 04</li>
         </ul>
       </div>
 
