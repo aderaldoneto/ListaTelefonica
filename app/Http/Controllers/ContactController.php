@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use App\Models\Contact;
 use Inertia\Inertia;
@@ -11,6 +12,7 @@ use App\Http\Requests\UpdateContactRequest;
 
 class ContactController extends Controller
 {
+    use AuthorizesRequests;
 
     public function index()
     {

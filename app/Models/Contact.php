@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
 
 class Contact extends Model
 {
+
+    use SoftDeletes;
     protected $fillable = ['user_id','name','email','phone','image_path'];
     protected $appends = ['image_url'];
     protected $hidden = ['image_path'];

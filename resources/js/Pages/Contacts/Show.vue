@@ -19,12 +19,6 @@ const props = defineProps({
 
       <div class="flex gap-2">
         <Link
-          :href="route('contacts.edit', contact.id)"
-          class="rounded-lg border px-4 py-2 hover:bg-zinc-50 dark:border-zinc-700 dark:hover:bg-zinc-800"
-        >
-          Editar
-        </Link>
-        <Link
           :href="route('contacts.index')"
           class="rounded-lg border px-4 py-2 hover:bg-zinc-50 dark:border-zinc-700 dark:hover:bg-zinc-800"
         >
