@@ -34,3 +34,7 @@ sail artisan storage:link
 sail artisan db:seed DatabaseSeeder  
 Email: teste01@exemplo.com ou teste02@exemplo.com  
 Senha: 123456789  
+
+
+## Link do vídeo demonstrativo no YT
+https://www.youtube.com/watch?v=IEU6H8aeDhc
