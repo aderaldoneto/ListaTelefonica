@@ -124,11 +124,10 @@ function onPhoneInput(e) {
             <p v-if="form.errors.phone" class="error">{{ form.errors.phone }}</p>
           </div>
 
-          <!-- Imagem atual + opções -->
+          <!-- Img + opções -->
           <div>
             <label class="label">Foto</label>
 
-            <!-- Se já tem imagem e não marcou remover -->
             <div v-if="props.contact.image_url && !form._remove_image && !previewUrl" class="flex items-center gap-3">
               <img :src="props.contact.image_url" alt="Imagem atual"
                    class="h-16 w-16 rounded-full object-cover ring-1 ring-gray-200" />
@@ -138,7 +137,6 @@ function onPhoneInput(e) {
               </label>
             </div>
 
-            <!-- Upload de nova imagem (substitui a atual no update) -->
             <input
               id="image"
               type="file"
@@ -149,7 +147,6 @@ function onPhoneInput(e) {
             />
             <p v-if="form.errors.image" class="error">{{ form.errors.image }}</p>
 
-            <!-- Preview da nova imagem selecionada -->
             <div v-if="previewUrl" class="mt-3 flex items-center gap-3">
               <img :src="previewUrl" alt="Pré-visualização"
                    class="h-16 w-16 rounded-full object-cover ring-1 ring-gray-200" />
@@ -166,7 +163,7 @@ function onPhoneInput(e) {
             <Link :href="route('contacts.index')" class="btn-secondary">Cancelar</Link>
           </div>
 
-          <!-- Erros gerais -->
+          <!-- Erros -->
           <div v-if="Object.keys(form.errors).length"
                class="rounded border border-red-200 bg-red-50 p-3 text-sm text-red-700">
             Verifique os campos acima.

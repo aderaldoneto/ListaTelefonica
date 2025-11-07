@@ -123,7 +123,7 @@ function onPhoneInput(e) {
             <Link :href="route('contacts.index')" class="btn-secondary">Cancelar</Link>
           </div>
 
-          <!-- Erros gerais (fallback) -->
+          <!-- Erros -->
           <div v-if="Object.keys(form.errors).length" class="rounded border border-red-200 bg-red-50 p-3 text-sm text-red-700">
             Verifique os campos acima.
           </div>

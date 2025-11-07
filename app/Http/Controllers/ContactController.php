@@ -114,6 +114,7 @@ class ContactController extends Controller
 
     public function destroy(Contact $contact)
     {
+        \Log::info("destroy");
         $this->authorize('delete', $contact);
 
         if ($contact->image_path) {
@@ -121,6 +122,6 @@ class ContactController extends Controller
         }
         $contact->delete();
 
-        return back()->with('success','Contato removido!');
+        return to_route('contacts.index')->with('success','Contato removido');
     }
 }

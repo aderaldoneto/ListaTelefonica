@@ -26,7 +26,7 @@ function destroyContact(id) {
   }
 }
 
-// Paginação SPA
+// Paginação 
 function go(link) {
   if (!link.url || link.active) return
   router.get(link.url, {}, { preserveState: true, replace: true })

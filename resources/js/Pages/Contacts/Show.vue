@@ -1,5 +1,5 @@
 <script setup>
-import { Link, Head } from '@inertiajs/vue3'
+import { Link, Head, router } from '@inertiajs/vue3'
 
 const props = defineProps({
   contact: {
@@ -7,6 +7,12 @@ const props = defineProps({
     required: true,
   },
 })
+
+function destroyContact() {
+  if (confirm('Tem certeza que deseja excluir este contato?')) {
+    router.delete(route('contacts.destroy', props.contact.id))
+  }
+}
 </script>
 
 <template>
@@ -72,21 +78,13 @@ const props = defineProps({
         Editar contato
       </Link>
 
-      <form
-        :action="route('contacts.destroy', contact.id)"
-        method="post"
-        @submit.prevent="(e) => e.target.submit()"
-        class="inline"
+      <button
+        type="button"
+        @click="destroyContact"
+        class="inline-flex items-center justify-center rounded-lg bg-red-600 px-5 py-2 text-white hover:bg-red-700"
       >
-        <input type="hidden" name="_method" value="DELETE" />
-        <input type="hidden" name="_token" :value="$page.props.csrf_token" />
-        <button
-          type="submit"
-          class="inline-flex items-center justify-center rounded-lg bg-red-600 px-5 py-2 text-white hover:bg-red-700"
-        >
-          Excluir
-        </button>
-      </form>
+        Excluir
+      </button>
     </div>
   </div>
 </template>
