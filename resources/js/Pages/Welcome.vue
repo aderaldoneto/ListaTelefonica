@@ -19,7 +19,7 @@ const props = defineProps({
             <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V21a1 1 0 0 1-1 1C10.3 22 2 13.7 2 3a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/>
           </svg>
         </div>
-        <span class="font-semibold text-lg">Agenda Telefônica</span>
+        <span class="font-semibold text-lg">MyContacts</span>
       </div>
 
       <nav class="flex items-center gap-3">

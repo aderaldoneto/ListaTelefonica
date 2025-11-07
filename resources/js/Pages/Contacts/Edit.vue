@@ -60,7 +60,7 @@ function onPhoneInput(e) {
 </script>
 
 <template>
-  <Head title="Editar contato" />
+  <Head title="Editar" />
   <AuthenticatedLayout>
     <template #header>
       <div class="flex items-center justify-between">

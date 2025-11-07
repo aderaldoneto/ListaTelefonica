@@ -26,6 +26,6 @@ class RegistrationTest extends TestCase
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirect(redirect()->route('contacts.index'));
+        $response->assertRedirect(route('contacts.index'));
     }
 }

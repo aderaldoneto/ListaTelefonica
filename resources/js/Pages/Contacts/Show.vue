@@ -1,5 +1,5 @@
 <script setup>
-import { Link } from '@inertiajs/vue3'
+import { Link, Head } from '@inertiajs/vue3'
 
 const props = defineProps({
   contact: {
@@ -10,6 +10,7 @@ const props = defineProps({
 </script>
 
 <template>
+  <Head title="Detalhes" />
   <div class="max-w-3xl mx-auto px-4 py-10">
     <!-- Header -->
     <div class="flex items-center justify-between mb-6">

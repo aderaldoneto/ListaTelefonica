@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use App\Models\Contact;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreContactRequest;
@@ -16,15 +17,19 @@ class ContactController extends Controller
 
     public function index()
     {
+        $q = trim((string) request('q'));
+        $op = DB::getDriverName() === 'pgsql' ? 'ilike' : 'like';
+
         $contacts = Contact::query()
             ->where('user_id', auth()->id())
-            ->when(request('q'), fn($q) =>
-                $q->where(function($qq){
-                    $qq->where('name','like','%'.request('q').'%')
-                       ->orWhere('email','like','%'.request('q').'%')
-                       ->orWhere('phone','like','%'.request('q').'%');
-                })
-            )
+            ->when($q !== '', function ($query) use ($q, $op) {
+                $like = "%{$q}%";
+                $query->where(function ($qq) use ($like, $op) {
+                    $qq->where('name',  $op, $like)
+                    ->orWhere('email', $op, $like)
+                    ->orWhere('phone', $op, $like);
+                });
+            })
             ->orderBy('name')
             ->paginate(10)
             ->withQueryString();
